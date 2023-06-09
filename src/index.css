@@ -24,3 +24,11 @@ body {
 .action-icons:hover {
   cursor: pointer;
 }
+
+.cartContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}

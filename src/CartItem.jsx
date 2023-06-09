@@ -24,16 +24,23 @@ export default class CartItem extends Component {
   };
 
   decreaseQuantity = () => {
+    const { qty } = this.state;
+
+    if (qty === 0) {
+      return;
+    }
     this.setState((prevState) => {
       return { qty: prevState.qty - 1 };
     });
   };
 
   render() {
-    const { price, title, qty } = this.state;
+    console.log("this.props", this.props);
+    const { price, title, qty } = this.props.product;
 
     return (
       <div className="cart-item">
+        {this.props.jsx}
         <div className="left-block">
           <img style={styles.image} />
         </div>
