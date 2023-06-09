@@ -30,6 +30,49 @@ export default class Cart extends Component {
       ],
     };
   }
+
+  handleIncreaseQuantity = (product) => {
+    console.log("Hey ples inc qty");
+    const { products } = this.state;
+
+    const index = products.indexOf(product);
+    console.log(index);
+
+    products[index].qty += 1;
+
+    this.setState({
+      products: products,
+    });
+  };
+
+  handleDecreaseQuantity = (product) => {
+    console.log("Hey ples inc qty");
+    const { products } = this.state;
+
+    const index = products.indexOf(product);
+    console.log(index);
+
+    if(products[index].qty === 0){
+        return;
+    }
+    products[index].qty -= 1;
+
+    this.setState({
+      products: products,
+    });
+  };
+
+  handleDeleteProduct = (id) => {
+    const {products} = this.state;
+    
+    const items = products.filter((item) => item.id !== id);
+
+    this.setState({
+        products: items
+    })
+
+  }
+
   render() {
     const { products } = this.state;
     return (
@@ -39,9 +82,9 @@ export default class Cart extends Component {
             <CartItem
               key={product.id}
               product={product}
-              func={() => console.log("sdsd")}
-              isloggedin={false}
-              jsx={<h1>Test</h1>}
+              onIncreaseQuantity={this.handleIncreaseQuantity}
+              onDecreaseQuantity={this.handleDecreaseQuantity}
+              onHandleDeleteProduct = {this.handleDeleteProduct}
             />
           );
         })}
