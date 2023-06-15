@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div style={styles.nav}>
       <div style={styles.cartIconContainer}>
-        {/* <h1>Cart App</h1> */}
+        <h1 style={styles.heading}>Cart App</h1>
         <img
           style={styles.cartIcon}
           src="https://cdn-icons-png.flaticon.com/128/3144/3144456.png"
           alt="cart"
         />
-        <span style={styles.cartCount}>3</span>
+        <span style={styles.cartCount}>{props.count()}</span>
       </div>
     </div>
   );
@@ -29,15 +29,20 @@ const styles = {
     alignItems: "center",
   },
   cartIconContainer: {
+    display: "flex",
+    gap: "2rem",
+    justifyContent: "center",
+    alignItems: "center",
     position: "relative",
+    marginTop: "1rem"
   },
   cartCount: {
     background: "yellow",
     borderRadius: "50%",
-    padding: "2px 8px",
+    padding: "4px 8px",
     position: "absolute",
     right: 0,
-    top: -10,
+    top: 6,
   },
 };
 
